@@ -281,10 +281,10 @@
 )
 
 (:method HandEmptyNull
-	:parameters (?x_0 - hand ?x_1 - hand)
+	:parameters (?x_0 - hand)
 	:task (AchieveHandEmpty ?x_0)
 	:precondition (and 
-		(handEmpty ?x_1)
+		(handEmpty ?x_0)
 	)
 	:ordered-subtasks (and 
 	)
