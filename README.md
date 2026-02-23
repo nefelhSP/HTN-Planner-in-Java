@@ -45,6 +45,7 @@ javac -d bin src/barman/*.java
 # Run (default: pfile10.hddl)
 java -cp bin barman.Main
 run_barman.bat
+```
 
 
 ---
