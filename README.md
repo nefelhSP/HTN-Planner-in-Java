@@ -66,7 +66,7 @@ Execution time
 ---
 
 
-Limitations
+## Limitations
 Planner uses DFS with fixed node and depth limits (MaxNodes = 20000, MaxDepth = 60); very large problems may hit these limits
 Problem file path is hardcoded in 
 Main.java
@@ -77,5 +77,5 @@ Single-threaded execution
 ---
 
 
-License
+## License
 This project was developed for academic thesis purposes. All rights reserved.
