@@ -27,6 +27,8 @@ The planner encodes the full domain logic (10 tasks, ~20 methods, 11 primitive a
 ---
 
 ## Project Structure
+
+```text
 Barman/
 ├── domain.hddl          # HTN domain rules, methods, and task definitions
 ├── problemFiles/        # Collection of benchmarks (pfile01.hddl to pfile20.hddl)
@@ -36,15 +38,15 @@ Barman/
 │   ├── ProblemParser.java # HDDL file parser
 │   ├── WorldState.java  # Current world representation and state tracking
 │   ├── [Logic Components]
-│   │   ├── Effects.java    # Action state updates
+│   │   ├── Effects.java       # Action state updates
 │   │   ├── Preconditions.java # Action feasibility checks
-│   │   └── Validate.java   # Plan verification utilities
+│   │   └── Validate.java      # Plan verification utilities
 │   └── [Model Classes]
-│       ├── Task.java / Method.java / Action.java # Data models for HTN elements
-│       └── Types.java      # Domain object hierarchy
-└── run_barman.bat       # Execution script for Windows environments
+│       ├── Task.java / Method.java / Action.java # Data models
+│       └── Types.java         # Domain object hierarchy
+└── run_barman.bat       # Execution script for Windows
 
-
+```
 ---
 
 ## How to Run
@@ -68,13 +70,13 @@ run_barman.bat
 
 ## Output
 The planner prints:
-Initial world state — all predicates active at the start
-Tasks to decompose — the list of high-level goals parsed from the problem file
-Per-task plan — the sequence of primitive actions found by the Planner
-Validation phase — step-by-step re-execution to confirm plan correctness
-Cleanup phase — actions taken between tasks to reset shared resources
-Full agenda — the complete hierarchical decomposition trace (tasks → methods → actions)
-Full plan — the final flat action sequence
+Initial world state — all predicates active at the start  
+Tasks to decompose — the list of high-level goals parsed from the problem file  
+Per-task plan — the sequence of primitive actions found by the Planner  
+Validation phase — step-by-step re-execution to confirm plan correctness  
+Cleanup phase — actions taken between tasks to reset shared resources  
+Full agenda — the complete hierarchical decomposition trace (tasks → methods → actions)  
+Full plan — the final flat action sequence  
 Execution time
 
 
@@ -82,8 +84,8 @@ Execution time
 
 
 ## Limitations
-Planner uses DFS with fixed node and depth limits (MaxNodes = 20000, MaxDepth = 60)
-Problem file path is hardcoded in Main.java — no command-line argument support yet
+Planner uses DFS with fixed node and depth limits (MaxNodes = 20000, MaxDepth = 60)  
+Problem file path is hardcoded in Main.java — no command-line argument support yet  
 Single-threaded execution
 
 
