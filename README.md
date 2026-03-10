@@ -27,7 +27,22 @@ The planner encodes the full domain logic (10 tasks, ~20 methods, 11 primitive a
 ---
 
 ## Project Structure
-Barman/ ├── domain.hddl # HTN domain definition (tasks, methods, actions) ├── problemFiles/ │ ├── pfile01.hddl – pfile20.hddl # Benchmark problem instances ├── src/barman/ │ ├── Main.java # Entry point │ ├── Planner.java # DFS-based HTN planner │ ├── ProblemParser.java # HDDL problem file parser │ ├── WorldState.java # World state representation │ ├── Effects.java # Action effect application │ ├── Preconditions.java # Precondition checking │ ├── Validate.java # Plan validator │ ├── Cleanup.java # Inter-task cleanup phase │ ├── Factory.java # Task/Method/Action factory │ ├── Types.java # Domain type hierarchy │ ├── DomainHelper.java # Object lookup utilities │ ├── Task.java / Method.java / Action.java │ └── [Domain Task & Action classes] └── run_barman.bat # Windows run script
+Barman/
+├── domain.hddl          # HTN domain rules, methods, and task definitions
+├── problemFiles/        # Collection of benchmarks (pfile01.hddl to pfile20.hddl)
+├── src/barman/
+│   ├── Main.java        # Project entry point and execution controller
+│   ├── Planner.java     # Core HTN engine (DFS logic)
+│   ├── ProblemParser.java # HDDL file parser
+│   ├── WorldState.java  # Current world representation and state tracking
+│   ├── [Logic Components]
+│   │   ├── Effects.java    # Action state updates
+│   │   ├── Preconditions.java # Action feasibility checks
+│   │   └── Validate.java   # Plan verification utilities
+│   └── [Model Classes]
+│       ├── Task.java / Method.java / Action.java # Data models for HTN elements
+│       └── Types.java      # Domain object hierarchy
+└── run_barman.bat       # Execution script for Windows environments
 
 
 ---
@@ -55,7 +70,7 @@ run_barman.bat
 The planner prints:
 Initial world state — all predicates active at the start
 Tasks to decompose — the list of high-level goals parsed from the problem file
-Per-task plan — the sequence of primitive actions found by the DFS
+Per-task plan — the sequence of primitive actions found by the Planner
 Validation phase — step-by-step re-execution to confirm plan correctness
 Cleanup phase — actions taken between tasks to reset shared resources
 Full agenda — the complete hierarchical decomposition trace (tasks → methods → actions)
@@ -67,10 +82,8 @@ Execution time
 
 
 ## Limitations
-Planner uses DFS with fixed node and depth limits (MaxNodes = 20000, MaxDepth = 60); very large problems may hit these limits
-Problem file path is hardcoded in 
-Main.java
- — no command-line argument support yet
+Planner uses DFS with fixed node and depth limits (MaxNodes = 20000, MaxDepth = 60)
+Problem file path is hardcoded in Main.java — no command-line argument support yet
 Single-threaded execution
 
 
