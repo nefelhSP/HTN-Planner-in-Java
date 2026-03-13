@@ -4,8 +4,7 @@ import java.util.*;
 import barman.Types.*;
 
 /**
- * The Main class is the entry point of the program and initializes all
- * components.
+ * The Main class is the entry point of the program and initializes all components.
  */
 class Main {
     public static void main(String[] args) {
@@ -14,28 +13,30 @@ class Main {
         Scanner scanner = new Scanner(System.in);
         int number = 0;
         String filepath = "";
+        boolean validInput = false; // Flag to control the while loop
 
-        System.out.println("Enter the number of the problem file you want to solve (1-20): ");
-        // Checking if the input is an integer
-        if (scanner.hasNextInt()) {
-            number = scanner.nextInt();
+        while (!validInput) {
+            System.out.println("Enter the number of the problem file you want to solve (1-20): ");
+            // Checking if the input is an integer
+            if (scanner.hasNextInt()) {
+                number = scanner.nextInt();
 
-            // Checking if the input is within the range of 1-20
-            if (number >= 1 && number <= 20) {
-                if ((number >= 1 && number <= 9)) {
-                    filepath = "problemFiles/pfile0" + number + ".hddl";
+                // Checking if the input is within the range of 1-20
+                if (number >= 1 && number <= 20) {
+                    if ((number >= 1 && number <= 9)) {
+                        filepath = "problemFiles/pfile0" + number + ".hddl";
+                    } else {
+                        filepath = "problemFiles/pfile" + number + ".hddl";
+                    }
+                    validInput = true;
                 } else {
-                    filepath = "problemFiles/pfile" + number + ".hddl";
+                    System.out.println("Invalid input. Please enter a number between 1 and 20.");
                 }
             } else {
-                System.out.println("Invalid input. Please enter a number between 1 and 20.");
-                return;
+                // Handle non-numeric input
+                System.out.println("That's not a number. Please enter a digit.");
+                scanner.next();
             }
-        } else {
-            // Handle non-numeric input
-            System.out.println("That's not a number. Please enter a digit.");
-            scanner.next();
-            return;
         }
 
         // Starting the timer
