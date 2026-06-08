@@ -10,7 +10,7 @@ This project was developed as part of a Computer Science thesis at the **Univers
 
 The Barman domain models a robotic bartender that must prepare multiple cocktails. Each cocktail requires filling a shaker with specific ingredients, shaking, and pouring into shot glasses. All that managed with limited resources (containers, dispensers, level tracking).
 
-The planner encodes the full domain logic (10 tasks, ~20 methods, 11 primitive actions) in Java and solves HDDL problem files of varying complexity.
+The planner encodes the full domain logic (10 tasks, 22 methods, 11 primitive actions) in Java and solves HDDL problem files of varying complexity.
 
 ---
 
@@ -59,7 +59,6 @@ Barman/
 ```bash
 # Compile
 javac -d bin src/barman/*.java
-# Run (default: pfile10.hddl)
 java -cp bin barman.Main
 run_barman.bat
 ```
