@@ -53,13 +53,16 @@ Barman/
 
 ### Prerequisites
 - Java 8 or later
-- Any standard Java IDE (IntelliJ IDEA, Eclipse)
+- Any standard Java IDE (IntelliJ IDEA, Eclipse) or command line interface
 
-### From command line
+### Command Line Execution
 ```bash
-# Compile
+# Compile the source code
 javac -d bin src/barman/*.java
+# Run with Java
+# Simply pass the problem number (e.g., 1 for pfile01.hddl):
 java -cp bin barman.Main
+# Windows Batch Script
 run_barman.bat
 ```
 
@@ -67,29 +70,29 @@ run_barman.bat
 ---
 
 
-## Output
-The planner prints:
-Initial world state — all predicates active at the start  
-Tasks to decompose — the list of high-level goals parsed from the problem file  
-Per-task plan — the sequence of primitive actions found by the Planner  
-Validation phase — step-by-step re-execution to confirm plan correctness  
-Cleanup phase — actions taken between tasks to reset shared resources  
-Full agenda — the complete hierarchical decomposition trace (tasks → methods → actions)  
-Full plan — the final flat action sequence  
-Execution time
+## Planner Output
+During execution, the planner outputs a detailed execution trace including:
+- Initial World State: Active predicates at start-up
+- Tasks to Decompose: List of high-level goals parsed from the problem file.
+- Per-Task Plan: Sequence of primitive actions found by the planner for each goal.
+- Validation Phase: Step-by-step re-execution to confirm plan correctness.
+- Cleanup Phase: Inter-task actions taken to reset shared resources.
+- Full Agenda: Complete hierarchical decomposition trace (Tasks → Methods → Actions).
+- Full Plan: Final flattened sequence of primitive actions.
+- Execution Time, Nodes Visited and Tree Depth
 
 
 ---
 
 
 ## Limitations
-Planner uses DFS with fixed node and depth limits (MaxNodes = 20000, MaxDepth = 60)  
-Problem file path is hardcoded in Main.java — no command-line argument support yet  
-Single-threaded execution
+To prevent infinite recursion during decomposition, the depth-first search engine operates within defined bounds:
+- Maximum Search Nodes (MaxNodes): 20,000
+- Maximum Search Depth (MaxDepth): 60
 
 
 ---
 
 
 ## License
-This project was developed for academic thesis purposes. All rights reserved.
+This project was developed for academic thesis purposes at the University of Macedonia. All rights reserved.
